@@ -88,4 +88,3 @@ sim.zad7 <- function() {
 
 res <- replicate(100000, sim.zad7())
 sum(res) / length(res)
-
