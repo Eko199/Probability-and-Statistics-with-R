@@ -86,3 +86,22 @@ pgeom(10-1, 0.03)
 # Problem 27
 # P(X >= 2)
 1 - phyper(1, 90, 2910, 50)
+
+# Problem 28
+# P(X >= 5)
+1 - pgeom(4-1, 1/10)
+
+# P(Y >= 50)
+1 - pnbinom(49-10, 10, 1/10)
+
+# Problem 29
+# P(X > 3)
+1 - pbinom(3, 360, 1/90)
+
+# Problem 30
+# P(X >= 2)
+1 - phyper(1, 13, 39, 10)
+
+# Problem 31
+# P(X >= 2)
+1 - pbinom(1, 10, 1/4)
