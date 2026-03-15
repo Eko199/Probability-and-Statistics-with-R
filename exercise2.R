@@ -84,3 +84,59 @@ N <- 100000
 res <- replicate(N, sim.zad12())
 sum(res[3,] == 1) / N
 sum(res[3,] == 1 & res[2,] == 2) / sum(res[3,] == 1)
+
+# Problem 13
+
+sim.zad13 <- function() {
+  cards <- c("ww", "bb", "wb")
+  card <- sample(cards, 1)
+  side <- sample(c(1, 2), 1)
+  side <- substr(card, side, side)
+  c(side, card)
+}
+
+res <- replicate(100000, sim.zad13())
+sum(res[2,] == "ww") / sum(res[1,] == "w")
+
+# Problem 14
+
+sim.zad14 <- function() {
+  balls <- sample(c(1:99), 4, replace='F')
+  balls[1] == max(balls)
+}
+
+res <- replicate(100000, sim.zad14())
+sum(res) / length(res)
+
+# Problem 15
+
+sim.zad15 <- function() {
+  people <- c(0, 0, c(1:18))
+  row <- sample(people, 20, replace='F')
+  sum(row == c(row[-1], -1))
+}
+
+res <- replicate(100000, sim.zad15())
+sum(res) / length(res)
+
+# Problem 16
+
+sim.zad16 <- function() {
+  deck <- c(1, 1, 1, 1, rep(0, 48))
+  hands <- sample(deck, 52, replace='F')
+  1 %in% hands[1:13] & 1 %in% hands[14:26] & 1 %in% hands[27:39] & 1 %in% hands[40:52] 
+}
+
+res <- replicate(100000, sim.zad16())
+sum(res) / length(res)
+
+# Problem 17
+
+sim.zad17 <- function() {
+  waiting <- sample(c(2:16), 7, replace='T')
+  c(anyDuplicated(waiting) > 0, waiting[1] %in% waiting[-1])
+}
+
+res <- replicate(100000, sim.zad17())
+sum(res[1,]) / length(res)
+sum(res[2,]) / length(res)
