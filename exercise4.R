@@ -93,8 +93,3 @@ qexp(0.9, 1/4)
 1 - pnorm(51, 41, 5)
 pnorm(50, 41, 5) - pnorm(45, 41, 5)
 qnorm(0.99, 41, 5)
-
-# Problem 44
-#n <- 100
-#x <- rnorm(n, -1, 1)
-#y <- rnorm(n, -1, 1)
