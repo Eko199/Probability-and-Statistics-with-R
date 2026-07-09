@@ -68,3 +68,74 @@ genNorm <- function() {
 
 replicate(10^5, genNorm())
 
+# Problem 8
+
+theta <- seq(0, 2 * pi, length.out = 1000)
+plot(cos(theta), sin(theta), type = "l", asp = 1)
+
+sim1 <- function() {
+  angles <- runif(2, 0, 2*pi)
+  
+  a.x <- cos(angles[1])
+  a.y <- sin(angles[1])
+  
+  b.x <- cos(angles[2])
+  b.y <- sin(angles[2])
+  
+  segments(a.x, a.y, b.x, b.y, col = adjustcolor("red", alpha.f = 0.02))
+  
+  chorde <- sqrt((a.x-b.x)^2 + (a.y-b.y)^2)
+  chorde
+}
+
+n <- 10000
+
+result1 <- replicate(n, sim1())
+
+hist(result1)
+mean(result1 > sqrt(3))
+
+plot(cos(theta), sin(theta), type = "l", asp = 1)
+
+sim2 <- function() {
+  phi <- runif(1, 0, 2*pi)
+  r <- runif(1)
+  
+  x <- r * cos(phi)
+  y <- r * sin(phi)
+  
+  lambda <- sqrt(1/(x^2+y^2)-1)
+  
+  segments(x - lambda*y, y + lambda*x, x + lambda*y, y - lambda*x, col = adjustcolor("red", alpha.f = 0.02))
+  
+  chorde <- 2 * sqrt(1 - r^2)
+  chorde
+}
+
+result2 <- replicate(n, sim2())
+
+hist(result2)
+mean(result2 > sqrt(3))
+
+plot(cos(theta), sin(theta), type = "l", asp = 1)
+
+sim3 <- function() {
+  phi <- runif(1, 0, 2*pi)
+  r2 <- runif(1)
+  
+  x <- sqrt(r2) * cos(phi)
+  y <- sqrt(r2) * sin(phi)
+  
+  lambda <- sqrt(1/(x^2+y^2)-1)
+  
+  segments(x - lambda*y, y + lambda*x, x + lambda*y, y - lambda*x, col = adjustcolor("red", alpha.f = 0.02))
+  
+  chorde <- 2 * sqrt(1 - r2)
+  chorde
+}
+
+result3 <- replicate(n, sim3())
+
+hist(result3)
+mean(result3 > sqrt(3))
+
